@@ -6,10 +6,10 @@ import { ThemeToggle } from "./ThemeToggle";
 
 function Header() {
   return (
-    <header className="bg-slate-100 text-primary dark:bg-slate-900 flex justify-between px-4 py-6 ">
+    <header className="bg-slate-100 text-primary dark:bg-slate-800 flex justify-between px-4 py-6 h-40px">
       <div className="">
         <Link href={"/"}>
-          <div className="flex justify-center items-center gap-1">
+          <div className="flex justify-center items-center space-y-2 gap-1">
             <Image
               alt="logo"
               src={"/logo/dropstore.svg"}
@@ -17,7 +17,7 @@ function Header() {
               height={30}
               className="invert dark:filter-none"
             />
-            <h1>Drop Store</h1>
+            <h1 className="text-center">Drop Store</h1>
           </div>
         </Link>
       </div>

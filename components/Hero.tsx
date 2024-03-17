@@ -4,8 +4,8 @@ import ArrowIcon from "./framer/arrow";
 import Image from "next/image";
 function Hero() {
   return (
-      <div className="flex flex-col lg:flex-row bg-[#fffefe] dark:bg-slate-900 text-white border-t-2 ">
-      <div className="flex flex-col space-y-5  p-10   dark:bg-slate-800  dark:text-primary text-slate-900 ">
+    <div className="flex flex-col lg:flex-row bg-[#fffefe] dark:bg-slate-900 text-white border-t-2 lg:border-0 border-gray-400 justify-center">
+      <div className="flex flex-col space-y-5  p-10    justify-center dark:text-primary text-slate-900 ">
         <h1 className="text-5xl font-bold ">
           Welcome To <span className="">Dropstore</span>
         </h1>
@@ -17,13 +17,13 @@ function Hero() {
 
         <Link
           href={"/dashboard"}
-          className="flex items-center text-center gap-2  bg-primary dark:bg-blue-500 text-white w-fit py-3 px-4">
+          className="flex items-center text-center gap-2  bg-primary dark:bg-blue-500 text-white w-fit py-3 px-4 ">
           Join us now
           <ArrowIcon />
         </Link>
       </div>
 
-      <div className="bg-[#1e1919] dark:bg-slate-800 p-10 space-y-5 ">
+      <div className="bg-white dark:bg-slate-900 p-10 space-y-5 ">
         <video autoPlay loop muted className="rounded-lg">
           <source
             src={
