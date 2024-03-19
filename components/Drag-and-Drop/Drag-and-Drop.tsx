@@ -7,10 +7,11 @@ import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/fi
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
+import toast from "react-hot-toast";
 
 function DragandDrop() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const { isLoaded, isSignedIn, user } = useUser();
+  const { user } = useUser();
 
   const onDropFile = (acceptedFiles: File[]) => {
     acceptedFiles.forEach((file) => {
@@ -31,26 +32,28 @@ function DragandDrop() {
         return;
       }
 
+      const toastId = toast.loading('Uploading...')
+
       setIsLoading(true);
 
       const docRef = await addDoc(collection(db, "users", user.id, "files"), {
         userId: user.id,
-        fileName: selectedFile.name,
+        filename: selectedFile.name,
         fullName: user.fullName,
         profileImage: user.imageUrl,
-        timestamp: serverTimestamp(),
+        timestamp:  serverTimestamp(),
         type: selectedFile.type,
         size: selectedFile.size,
       });
 
       const imageRef = ref(storage, `users/${user.id}/files/${docRef.id}`);
-      uploadBytes(imageRef, selectedFile).then(async (snapshot) => {
+      uploadBytes(imageRef, selectedFile).then(async () => {
         const downloadURL = await getDownloadURL(imageRef);
         await updateDoc(doc(db, 'users', user.id, 'files', docRef.id), {
           downloadURL
         })
       });
-
+toast.success('Upload completed.',{id:toastId})
       setIsLoading(false)
     };
   };

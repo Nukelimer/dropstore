@@ -25,9 +25,10 @@ async function Dashboard() {
   return (
     <div>
       <DragandDrop />
+      
 
       <section>
-        <h2>All My Files.</h2>
+        <h2 className="font-extrabold">All My Files.</h2>
         <div className="">
           <FileWrapper pseudoFiles={ pseudoFiles } />
         </div>

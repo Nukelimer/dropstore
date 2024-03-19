@@ -40,29 +40,35 @@ function FileWrapper({ pseudoFiles }: { pseudoFiles: FileType[] }) {
     setInitialFiles(files);
   }, [docs]);
 
-
   if (docs?.docs.length === undefined) {
     return (
-      
       <div className="flex flex-col">
-        <Button variant={'outline'} className="ml-auto w-40 h-10 mb-5">
-
-          <Skeleton className="h-5 w-full"/>
+        <Button variant={"outline"} className="ml-auto w-40 h-10 mb-5">
+          <Skeleton className="h-5 w-full" />
         </Button>
+        <div className="border rounded-lg">
+          <div className="border-b h-12" />
+          {pseudoFiles.map((file) => {
+            return <div className="flex items-center space-x-4 p-5 w-full" key={file.id}>
+              <Skeleton className="h-12 w-12"/>
+              <Skeleton className="h-12 w-full"/>
+            </div>;
+          })}
+        </div>
       </div>
-    )
+    );
   }
   return (
-    <div>
+    <div className="flex justify-end flex-col space-x-4 mr-4">
       <Button
-        className="my-4"
+        className="my-4 self-end"
         onClick={() => {
           setSortFiles(sortFiles === "asc" ? "desc" : "asc");
         }}>
-        Sort Files({sortFiles === "desc" ? "Newly Added" : "Oldest"})
+        Sort Files ( {sortFiles === "desc" ? "Newly Added" : "Oldest"})
       </Button>
 
-      <FileTable columns={columns} data={pseudoFiles} />
+      <FileTable columns={columns} data={initialFiles} />
     </div>
   );
 }

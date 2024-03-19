@@ -12,7 +12,7 @@ export const columns: ColumnDef<FileType>[] = [
 
     {
         accessorKey: "type",
-        header: "type",
+        header: "File Type",
         cell: ({ renderValue, ...props }) => {
             const type = renderValue() as string;
         
@@ -31,7 +31,7 @@ export const columns: ColumnDef<FileType>[] = [
       },
   {
     accessorKey: "filename",
-    header: "Filename",
+    header: "FileName",
   },
   {
     accessorKey: "timestamp",
@@ -46,7 +46,7 @@ export const columns: ColumnDef<FileType>[] = [
   },
   {
     accessorKey: "downloadURL",
-    header: "Link",
+    header: "DownLoad Link",
     cell: ({ renderValue, ...props }) => {
       return (
         <a

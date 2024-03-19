@@ -4,7 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/theme-provider";
-
+import toast,  { Toaster } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -27,7 +27,15 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange>
             <Header />
-
+            <Toaster
+            
+            
+            toastOptions={{
+             
+              className: 'bg-white dark:bg-slate-900 dark:border dark:border-white dark:text-white',
+            }}
+            
+            />
             {children}
           </ThemeProvider>
         </body>
