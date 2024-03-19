@@ -132,7 +132,7 @@ export function FileTable<TData, TValue>({
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                You haven't uploaded any file(s).
+                You haven&apos;t uploaded any file(s).
               </TableCell>
             </TableRow>
           )}
